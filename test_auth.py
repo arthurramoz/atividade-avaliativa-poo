@@ -23,29 +23,29 @@ def test_regras_arquiteturais_e_heranca_slide_34():
 
 def test_polimorfismo_permissoes():
     usuarios = carregar_usuarios()
-    bia, ana, caio = usuarios
+    arthur, bianca, maria = usuarios
 
-    assert bia.mostrar_nome() == 'bia'
-    assert bia.mostrar_perfil() == 'Visitante'
-    assert bia.pode_favoritar() is True
-    assert bia.pode_publicar() is False
-    assert bia.pode_moderar() is False
-    assert bia.conferir_senha('bia123') is True
-    assert bia.conferir_senha('errada') is False
+    assert arthur.mostrar_nome() == 'arthur'
+    assert arthur.mostrar_perfil() == 'Visitante'
+    assert arthur.pode_favoritar() is True
+    assert arthur.pode_publicar() is False
+    assert arthur.pode_moderar() is False
+    assert arthur.conferir_senha('arthur123') is True
+    assert arthur.conferir_senha('errada') is False
 
-    assert ana.mostrar_nome() == 'ana'
-    assert ana.mostrar_perfil() == 'Contribuidor'
-    assert ana.pode_favoritar() is True
-    assert ana.pode_publicar() is True
-    assert ana.pode_moderar() is False
-    assert ana.conferir_senha('ana123') is True
+    assert bianca.mostrar_nome() == 'bianca'
+    assert bianca.mostrar_perfil() == 'Contribuidor'
+    assert bianca.pode_favoritar() is True
+    assert bianca.pode_publicar() is True
+    assert bianca.pode_moderar() is False
+    assert bianca.conferir_senha('bianca123') is True
 
-    assert caio.mostrar_nome() == 'caio'
-    assert caio.mostrar_perfil() == 'Moderador'
-    assert caio.pode_favoritar() is True
-    assert caio.pode_publicar() is True
-    assert caio.pode_moderar() is True
-    assert caio.conferir_senha('caio123') is True
+    assert maria.mostrar_nome() == 'maria'
+    assert maria.mostrar_perfil() == 'Moderador'
+    assert maria.pode_favoritar() is True
+    assert maria.pode_publicar() is True
+    assert maria.pode_moderar() is True
+    assert maria.conferir_senha('maria123') is True
 
 
 def test_regras_arquitetura_mvc_camadas():
@@ -64,27 +64,27 @@ def test_regras_arquitetura_mvc_camadas():
 def test_auth_controller():
     controller = AuthController()
 
-    res_bia = controller.login('bia', 'bia123')
-    assert res_bia is not None
-    assert res_bia['nome'] == 'bia'
-    assert res_bia['perfil'] == 'Visitante'
-    assert res_bia['permissoes'] == {'favoritar': True, 'publicar': False, 'moderar': False}
-    assert 'senha' not in res_bia
-    assert '_senha' not in res_bia
+    res_arthur = controller.login('arthur', 'arthur123')
+    assert res_arthur is not None
+    assert res_arthur['nome'] == 'arthur'
+    assert res_arthur['perfil'] == 'Visitante'
+    assert res_arthur['permissoes'] == {'favoritar': True, 'publicar': False, 'moderar': False}
+    assert 'senha' not in res_arthur
+    assert '_senha' not in res_arthur
 
-    res_ana = controller.login('ana', 'ana123')
-    assert res_ana is not None
-    assert res_ana['nome'] == 'ana'
-    assert res_ana['perfil'] == 'Contribuidor'
-    assert res_ana['permissoes'] == {'favoritar': True, 'publicar': True, 'moderar': False}
+    res_bianca = controller.login('bianca', 'bianca123')
+    assert res_bianca is not None
+    assert res_bianca['nome'] == 'bianca'
+    assert res_bianca['perfil'] == 'Contribuidor'
+    assert res_bianca['permissoes'] == {'favoritar': True, 'publicar': True, 'moderar': False}
 
-    res_caio = controller.login('caio', 'caio123')
-    assert res_caio is not None
-    assert res_caio['nome'] == 'caio'
-    assert res_caio['perfil'] == 'Moderador'
-    assert res_caio['permissoes'] == {'favoritar': True, 'publicar': True, 'moderar': True}
+    res_maria = controller.login('maria', 'maria123')
+    assert res_maria is not None
+    assert res_maria['nome'] == 'maria'
+    assert res_maria['perfil'] == 'Moderador'
+    assert res_maria['permissoes'] == {'favoritar': True, 'publicar': True, 'moderar': True}
 
-    assert controller.login('bia', 'senha_incorreta') is None
+    assert controller.login('arthur', 'senha_incorreta') is None
     assert controller.login('usuario_fantasma', '1234') is None
 
 
@@ -95,20 +95,20 @@ def test_api_routes():
 
         client = TestClient(app)
 
-        resp = client.post('/api/auth/login', json={'nome': 'bia', 'senha': 'bia123'})
+        resp = client.post('/api/auth/login', json={'nome': 'arthur', 'senha': 'arthur123'})
         assert resp.status_code == 200, f"Esperado 200, recebido {resp.status_code}"
         dados = resp.json()
         assert dados['perfil'] == 'Visitante'
         assert dados['permissoes']['favoritar'] is True
         assert dados['permissoes']['publicar'] is False
 
-        resp_caio = client.post('/api/auth/login', json={'nome': 'caio', 'senha': 'caio123'})
-        assert resp_caio.status_code == 200
-        dados_caio = resp_caio.json()
-        assert dados_caio['perfil'] == 'Moderador'
-        assert dados_caio['permissoes']['moderar'] is True
+        resp_maria = client.post('/api/auth/login', json={'nome': 'maria', 'senha': 'maria123'})
+        assert resp_maria.status_code == 200
+        dados_maria = resp_maria.json()
+        assert dados_maria['perfil'] == 'Moderador'
+        assert dados_maria['permissoes']['moderar'] is True
 
-        resp_erro = client.post('/api/auth/login', json={'nome': 'bia', 'senha': 'errada'})
+        resp_erro = client.post('/api/auth/login', json={'nome': 'arthur', 'senha': 'errada'})
         assert resp_erro.status_code == 401, f"Esperado 401, recebido {resp_erro.status_code}"
         assert resp_erro.json()['detail'] == 'nome ou senha inválidos'
     except ImportError as e:
