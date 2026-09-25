@@ -47,16 +47,16 @@ class Moderador(Contribuidor):
 
 
 def carregar_usuarios():
-    perfis = {
+    catalogo_perfis = {
         'visitante': Visitante,
         'contribuidor': Contribuidor,
         'moderador': Moderador,
     }
 
-    usuarios = []
-    for u in USUARIOS:
-        classe = perfis[u['perfil']]
-        usuario = classe(u['id'], u['nome'], u['senha'])
-        usuarios.append(usuario)
+    lista_usuarios = []
+    for dados in USUARIOS:
+        classe_usuario = catalogo_perfis[dados['perfil']]
+        novo_usuario = classe_usuario(dados['id'], dados['nome'], dados['senha'])
+        lista_usuarios.append(novo_usuario)
 
-    return usuarios
+    return lista_usuarios

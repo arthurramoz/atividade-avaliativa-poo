@@ -13,8 +13,8 @@ class LoginRequest(BaseModel):
 
 
 @router.post('/login')
-def login(dados: LoginRequest):
-    usuario = controller.login(dados.nome, dados.senha)
-    if usuario is None:
+def login(credenciais: LoginRequest):
+    usuario_logado = controller.login(credenciais.nome, credenciais.senha)
+    if usuario_logado is None:
         raise HTTPException(401, 'nome ou senha inválidos')
-    return usuario
+    return usuario_logado
