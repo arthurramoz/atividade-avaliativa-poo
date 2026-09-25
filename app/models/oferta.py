@@ -1,8 +1,8 @@
 class Oferta:
     def __init__(self, id, produto, mercado, novo_preco):
         self._id = id
-        self._produto = produto  # associação: guarda o objeto Produto
-        self._mercado = mercado  # associação: guarda o objeto Mercado
+        self._produto = produto
+        self._mercado = mercado
         self.alterar_preco(novo_preco)
 
     def mostrar_id(self):

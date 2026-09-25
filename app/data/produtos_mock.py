@@ -1,4 +1,3 @@
-# Dados provisórios: na aula de persistência viram banco de dados.
 PRODUTOS = [
     {'id': 1, 'nome': 'Arroz Tipo 1 5kg', 'categoria': 'Grãos', 'preco': 24.90},
     {'id': 2, 'nome': 'Feijão Preto 1kg', 'categoria': 'Grãos', 'preco': 8.49},

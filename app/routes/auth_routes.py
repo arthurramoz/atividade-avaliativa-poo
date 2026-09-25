@@ -7,7 +7,6 @@ router = APIRouter(prefix='/api/auth', tags=['auth'])
 controller = AuthController()
 
 
-# Modelo simples para receber os dados do login no body
 class LoginRequest(BaseModel):
     nome: str
     senha: str
