@@ -65,19 +65,19 @@ O servidor iniciará em: **http://127.0.0.1:8000**
 2. Localize a seção **`auth`** e clique em **`POST /api/auth/login`**.
 3. Clique em **Try it out** e teste os usuários nesta ordem:
 
-#### Teste 1: Arthur (Visitante)
+#### Teste 1: Bia (Visitante)
 - **Body:**
   ```json
   {
-    "nome": "arthur",
-    "senha": "arthur123"
+    "nome": "bia",
+    "senha": "bia123"
   }
   ```
 - **Retorno esperado (HTTP 200):**
   ```json
   {
     "id": 1,
-    "nome": "arthur",
+    "nome": "bia",
     "perfil": "Visitante",
     "permissoes": {
       "favoritar": true,
@@ -87,19 +87,19 @@ O servidor iniciará em: **http://127.0.0.1:8000**
   }
   ```
 
-#### Teste 2: Bianca (Contribuidor)
+#### Teste 2: Ana (Contribuidor)
 - **Body:**
   ```json
   {
-    "nome": "bianca",
-    "senha": "bianca123"
+    "nome": "ana",
+    "senha": "ana123"
   }
   ```
 - **Retorno esperado (HTTP 200):**
   ```json
   {
     "id": 2,
-    "nome": "bianca",
+    "nome": "ana",
     "perfil": "Contribuidor",
     "permissoes": {
       "favoritar": true,
@@ -109,19 +109,19 @@ O servidor iniciará em: **http://127.0.0.1:8000**
   }
   ```
 
-#### Teste 3: Maria (Moderador)
+#### Teste 3: Caio (Moderador)
 - **Body:**
   ```json
   {
-    "nome": "maria",
-    "senha": "maria123"
+    "nome": "caio",
+    "senha": "caio123"
   }
   ```
 - **Retorno esperado (HTTP 200):**
   ```json
   {
     "id": 3,
-    "nome": "maria",
+    "nome": "caio",
     "perfil": "Moderador",
     "permissoes": {
       "favoritar": true,
@@ -135,7 +135,7 @@ O servidor iniciará em: **http://127.0.0.1:8000**
 - **Body:**
   ```json
   {
-    "nome": "arthur",
+    "nome": "bia",
     "senha": "senha_errada"
   }
   ```

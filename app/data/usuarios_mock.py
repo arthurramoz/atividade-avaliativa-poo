@@ -1,5 +1,5 @@
 USUARIOS = [
-    {'id': 1, 'nome': 'arthur', 'senha': 'arthur123', 'perfil': 'visitante'},
-    {'id': 2, 'nome': 'bianca', 'senha': 'bianca123', 'perfil': 'contribuidor'},
-    {'id': 3, 'nome': 'maria', 'senha': 'maria123', 'perfil': 'moderador'},
+    {'id': 1, 'nome': 'bia', 'senha': 'bia123', 'perfil': 'visitante'},
+    {'id': 2, 'nome': 'ana', 'senha': 'ana123', 'perfil': 'contribuidor'},
+    {'id': 3, 'nome': 'caio', 'senha': 'caio123', 'perfil': 'moderador'},
 ]
